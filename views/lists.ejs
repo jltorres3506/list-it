@@ -1,0 +1,93 @@
+<%- include("partials/header") %>
+<div class="container lists-container">
+
+    <%- include("partials/appName") %>
+    <div id="" class=" main-container-styles container">
+        <div class="row " id="">
+            <h1 class=" main-title col-12">Welcome <%= usersName%></h1>
+        </div>
+        <div class="row ">
+            <h1 class="title-styles col-12 ">Your Lists</h1>
+        </div>
+        <div class="row links  ">
+            <div class="col-6">
+                <a class="link-styles  " href="/passcode">Reset Passcode</a>
+            </div>
+            <div class="col-6">
+                <a class="link-styles " href="/logout">Logout</a>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="main-container-styles items-container ">
+
+        <%   lists.forEach((list)=>{  %>
+
+        <form action="/list/delete" method="POST" id="<%=list._id %>">
+
+
+            <div class="item">
+                <input id="checkBoxForDeletingList" value="<%=list._id  %>" type="checkbox" onclick="deleteList(this)"
+                    name="checkBox">
+
+                <a data-tooltip="click on list to go to actual list" class="listsText"
+                    href="/list/viewList/<%=list._id%>" value="<%=list._id%>" name="listNameText"> <%= list.name %></a>
+
+
+            </div>
+            <input id="hiddenValue<%=list._id %>" type="hidden" name="passcode" onclick="">
+        </form>
+
+        <%   });  %>
+
+
+
+
+        <form class="item" method="post" action="/list/create">
+            <div class="form-group">
+
+                <input id="list-input-field" type="text" name="newListName"
+                    placeholder="input list name here, then click +" autocomplete="off" />
+            </div>
+
+            <button id="btn-add-list" type="submit">+</button>
+        </form>
+
+    </div>
+    <%- include("partials/creds") %>
+</div>
+
+<%- include("partials/footer") %>
+
+<script>
+    //function that is called when a checkbox is clicked
+    const deleteList = (event) => {
+
+        //grab all parts that belong to a form bundle
+        const checkboxId = (event.getAttribute("value"));
+        const formThatBelongsToCheckBox = document.getElementById(checkboxId);
+        const hiddenElement = document.getElementById("hiddenValue" + checkboxId);
+        const passcode = prompt(
+            "Warning this action cannot be undone, if you want to proceed with the deletion of this list please enter your passcode! "
+        );
+
+        //add passcode to value of hidden field so it gets passed to server end    
+        hiddenElement.value = passcode;
+
+        //submit form
+        formThatBelongsToCheckBox.submit();
+    }
+
+    //when text gets clicked on have list and its items appear on a new route where items can be
+    //added and removed
+    //try acheving this with a onclick on text
+
+    const showListWithItems = (event) => {
+        const id = event.checkboxId;
+        const pTagForm = document.getElementsByName("pTextForm" + id);
+
+        pTagForm.submit();
+    }
+</script>

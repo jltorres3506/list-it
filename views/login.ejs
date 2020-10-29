@@ -1,0 +1,57 @@
+<%- include('partials/header') %>
+
+<div id="login-container" class=" main-container-styles container ">
+  <%- include('partials/appName') %>
+  <div class="row no-gutters">
+    <div class=" head-container col-sm-12 ">
+          <h1 class="title-styles ">Login</h1>
+          <% if(message.length > 0 ){%>
+            <p class= "error-styles text-danger"><%= message%></p>
+            <% }%>
+
+            <% if(successMessage.length > 0 ){%>
+              <p class= "error-styles text-primary"><%= successMessage%></p>
+              <% }%>
+    </div>
+          <!-- Makes POST request to /login route -->
+          <form id="login-form" action="/login" method="POST"></form>
+          <div class="container inputs-container">
+            <div class=" row justify-content-center">
+              <div class=" col-8 form-group">
+                <label for="email">Email</label>
+                <input form="login-form" id="input-fields-login-styles" type="email" class="form-control" name="username">
+              </div>
+            </div>
+              
+            <div class="justify-content-center row">
+              <div class="col-8 form-group">
+                <label for="password">Password</label>
+                <input form="login-form" id="input-fields-login-styles" type="password" class="form-control" name="password">
+              </div>
+            </div>
+          </div>
+          <div class=" container buttons-container">
+            <div class=" row justify-content-around  ">
+                <div class=" login-btn-container  col-3 ">
+                  <button form="login-form"  id="btn-login" class=" btn button-styles ">Login</button>
+                </div>
+                <div class="col-4">
+                  <a class=" btn button-styles " id="btn-register" href="/register">Register</a>
+                </div>
+            </div>
+          </div>
+          
+         
+            <div class="container">
+              <div class="  password-reset-row no-gutters  row">
+                <div class="password-container w-100  col-12">
+                  <a class="link-styles register-link" href="/passwordReset">Reset Password</a>
+                </div>
+              </div>
+            </div>
+
+  </div>
+  <%- include('partials/creds') %>
+</div>
+
+<%- include('partials/footer') %>

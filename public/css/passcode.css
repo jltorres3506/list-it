@@ -1,0 +1,25 @@
+
+    .passcode-container  {
+        background-color:var(--container-box-color) ;
+        border-radius:15px ;
+        width: 350px;
+        margin-top: 50px;
+    }
+
+    .passcode-container .btn{
+        color:white;
+        background-color: var(--button-color);
+        margin-bottom: 10px;
+    }
+
+    .passcode-container .btn:hover{
+        color:var(--hover-button-color);
+    }
+
+    .passcode-container .row{
+        margin-top: 15px;
+    }
+
+    .passcode-container label{
+        font-weight: bolder;
+    }

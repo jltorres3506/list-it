@@ -1,0 +1,236 @@
+<%- include("partials/header") %>
+<div class=" single-list-container main-container-styles container">
+    <%- include("partials/appName") %>
+
+
+    <div class ="container main-container-styles list-heading-container">
+        <form data-tooltip ="click on title to edit" id="formListTitle" action="/list/titleEdit" method="post" onfocusout="formLoosesFocus(this)">
+            <h1 class="title-styles"   onclick="editListTitle(this)" id="listTitle"><%= list.name %></h1>
+            <input  type="hidden" name="listId" value="<%= list._id %>">
+        </form>
+        <div class= "row list-link-row">
+            <div class="col-6">
+                <a class=" link-styles " href='/list/show'>Lists</a>
+            </div>
+            <div class="col-6">
+                <a class="link-styles" href="/logout">Logout</a>
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <div class="container main-container-styles items-container">
+        <!-- start of sort code by order number -->
+        <% const newList = list.items.sort((a,b)=>{ %>
+            <%   return a.orderNumber - b.orderNumber%>
+                 <%  })  %>
+        <!-- end of sort code -->
+
+       
+        <% list.items.forEach((item)=>{  %>
+
+            <!-- edit item text form -->
+            <form action="/item/edit" method="post"  id="itemEditForm<%=item._id%>">
+                <input type="hidden" name="itemId" value="<%= item._id %>" />
+                <input type="hidden" name="listId" value="<%= list._id %>">
+            </form>
+
+            <!-- form for deleting an item -->
+            <form action="/item/delete" method="POST" id="itemDeleteForm<%=item._id%>"> </form>
+
+                <div class="item" >
+                    <!-- item ordering numbers -->
+                    <form action="/item/editOrder" method="post" id="orderNumberEditForm<%=item._id%>">
+                        
+                            <p data-tooltip ="click on number to edit"  onclick="editOrderNumber(this)" data-item-id= "<%=item._id  %>"><%=item.orderNumber%></p>
+                       
+                        
+                        <input form="orderNumberEditForm<%=item._id%>" type="hidden" name="listId" value="<%= list.id%>"> </input>
+                        <input form="orderNumberEditForm<%=item._id%>" type="hidden" name="itemId" value="<%= item._id %>" />
+                    </form>
+                    
+                    <input form="itemDeleteForm<%=item._id%>" value="<%=item._id  %>" type="checkbox" onchange="checkBoxChange(this)" name="checkBox">
+                    <input form="itemDeleteForm<%=item._id%>" type="hidden" name="listId" value="<%= list.id%>"> </input>
+                    
+                    <p id="item-text" data-tooltip ="click on text to edit"  class="itemText" data-item-id= "<%=item._id  %>" onclick="editItemText(this)" id="itemText"><%= item.name %></p>
+                </div>
+                
+               
+           
+            
+           
+        <%   });  %>
+                
+          <!--form for adding an item  -->
+ 
+
+          
+    <form  class=" item" method="post" action="/list/addNewItemToList">
+        <div class=" item-input-row  row">
+        <div  class="col-10   form-group">
+            
+            <textarea  class="  newItem form-control"   type="text" name="newItem" placeholder="New Item" autocomplete="off"/></textarea>
+        </div>
+        <input  type="hidden" name="listId" value="<%= list._id%>"/>
+        <div class=" col-2">
+            <button id="btn-add-item" type="submit" name="list" value="<%= list.name %>">+</button>
+        </div>
+    </div>
+    </form>
+
+</div>
+<%- include("partials/creds") %>
+</div>
+
+
+
+<%- include("partials/footer") %>
+
+<script>
+
+
+// this is only used for the listTitleForm
+const formLoosesFocus = (form)=>{
+
+    //when edit title field looses focus submit form
+    form.submit();
+} 
+   
+                  
+
+//gets called when list title gets clicked on, which replaces element with input element of text                
+const editListTitle = (elementWantingToReplace)=>{
+
+        const newTextInputElement = document.createElement("input");
+
+        newTextInputElement.setAttribute("type","text");
+       
+        newTextInputElement.setAttribute("name","listTitleEditField");
+        
+        newTextInputElement.setAttribute("autocomplete","off");
+        newTextInputElement.value = elementWantingToReplace.innerHTML;
+        newTextInputElement.className += "listTitleEditField";
+
+
+        //grab the parent element of that parent
+        const parentOfExistingElement = elementWantingToReplace.parentNode;
+
+        //swap old element with new created one
+        parentOfExistingElement.replaceChild(newTextInputElement,elementWantingToReplace);
+
+        //causes input text box to go into focus with cursor flashing on it
+        newTextInputElement.focus();
+
+    } 
+
+const editItemText = (element)=>{
+
+    const newTextInputElement = document.createElement("textarea");
+
+    //add the attributes to element
+    newTextInputElement.setAttribute("class","form-control");
+    newTextInputElement.className +=" editItemInput";
+  
+    newTextInputElement.setAttribute("name","editItemInput");
+    newTextInputElement.setAttribute("autocomplete","off");
+    newTextInputElement.value = element.innerHTML;
+
+   
+
+    const itemId = element.dataset.itemId;
+    
+
+    //attaching this input element with the right form, 
+    //form has id attribute of "itemEditForm1918293293" the numbers sholud be the item id number 
+    newTextInputElement.setAttribute("form","itemEditForm"+itemId);
+
+
+    //grab the parent element of that parent
+    const parentOfExistingElement = element.parentNode;
+        console.log("parent node");
+       console.log(parentOfExistingElement); 
+
+    //swap old element with new created one
+    parentOfExistingElement.replaceChild(newTextInputElement,element);
+
+    //causes input text box to go into focus with cursor flashing on it
+    newTextInputElement.focus();
+
+
+    const submitForm = function(){
+
+        const form = document.getElementById("itemEditForm"+element.dataset.itemId);  
+        // console.log(form);
+        form.submit();
+    }
+
+    //when input field is out of focus submit form
+    newTextInputElement.addEventListener("focusout",submitForm);
+
+}
+
+//belongs to the checkbox for deleting
+const checkBoxChange = (element)=>{
+    console.log(element.form);
+    element.form.submit();
+};
+
+
+
+
+
+// edit order number
+const editOrderNumber = (elementWantingToReplace)=>{
+
+const newTextInputElement = document.createElement("input");
+
+newTextInputElement.setAttribute("type","text");
+
+newTextInputElement.setAttribute("name","orderNumberField");
+
+newTextInputElement.setAttribute("autocomplete","off");
+newTextInputElement.setAttribute("class","orderNumberInput");
+newTextInputElement.setAttribute("maxlength",2);
+
+
+//grab the parent element of that parent
+const parentOfExistingElement = elementWantingToReplace.parentNode;
+
+
+
+//swap old element with new created one
+parentOfExistingElement.replaceChild(newTextInputElement,elementWantingToReplace);
+
+//causes input text box to go into focus with cursor flashing on it
+newTextInputElement.focus();
+
+
+const submitForm = function(){
+
+const form = document.getElementById("orderNumberEditForm"+elementWantingToReplace.dataset.itemId);  
+
+form.submit();
+}
+
+
+//code make sure that what user enters in order number is an actual number
+function isNumber(n) { return !isNaN(parseFloat(n)) && !isNaN(n - 0) };
+
+const checkForNumber = ()=>{
+    const orderNumber = newTextInputElement.value;
+    if(isNumber(orderNumber)){
+        submitForm();
+    }else{
+        alert("order number must be a number!");
+    }
+};
+
+
+
+
+//when input field is out of focus check to make sure its and number then submit
+newTextInputElement.addEventListener("focusout",checkForNumber);
+
+} 
+</script>

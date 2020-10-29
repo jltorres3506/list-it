@@ -1,0 +1,26 @@
+/* color variables for whole application */
+:root{
+    /* lists ejs */
+     --main-background-color: #5D536B;
+     --top-box-color: #989FCE;
+     --links-color: #5D536B;
+     --user-welcome-color:#5D536B;
+     --list-box-color:#DDDBCB;
+     --add-button-color:#989FCE;
+     --list-items-hover-color:#989FCE;
+  
+     /* login ejs */
+     --container-box-color: #989FCE;
+     --font-color: black;
+     
+  
+     /* button colors */
+     --button-color: #5D536B;
+     --hover-button-color:black;
+     --hover-button-backgound-color: #B9B1C3;
+  
+     /* Register ejs */
+    --submit-button-color:#5D536B;
+  
+
+  }

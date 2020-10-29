@@ -1,0 +1,81 @@
+.lists-container{
+  width: 400px;
+  height: auto;
+  background-color:#867575 ;
+  border-radius:15px ;
+  margin-top: 20px;
+ 
+  padding:5px 10px 5px 10px;
+}
+
+.lists-container .main-container-styles{
+  text-align: center;
+  padding-bottom: 15px;
+  width: 100%;
+}
+
+.main-title {
+  color:var(--user-welcome-color);
+  padding: 10px;
+  font-size: 24px;
+  font-weight: bolder;
+}
+
+
+
+
+/* css for bottom container where actual items are placed  */
+.listsText {
+    color: black;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+.listsText:hover {
+    color:var(--list-items-hover-color); 
+     text-decoration:none; 
+     cursor:pointer; 
+}
+
+  .items-container{
+    max-width: 100%;
+    margin: 50px auto;
+    background: var(--list-box-color);
+    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+    font-weight: normal;
+  }
+
+
+#btn-add-list{
+  min-height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border-color: transparent;
+  background-color: var(--add-button-color);
+  color: #fff;
+  font-size: 30px;
+  padding-bottom: 6px;
+  border-width: 0;
+  margin-right: 5px;
+}
+
+#btn-add-list:hover{
+ background-color: black;
+
+}
+
+#list-input-field{
+  text-align: center;
+  height: 60px;
+  top: 10px;
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  font-weight: 200;
+  width: 300px;
+  margin-right: 5px;
+}
+
+#list-input-field:hover{
+  background-color: white;
+}

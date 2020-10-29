@@ -1,0 +1,79 @@
+/* buttons style */
+.button-styles{
+    background-color: var(--button-color);
+    color: white;
+    width: 100%;
+}
+
+.button-styles:hover{
+    color: var(--hover-button-color);
+    background-color:var(--hover-button-backgound-color) ;
+}
+
+/* link styles */
+.link-styles{
+    
+    text-decoration: none; /* no underline */
+    color: var(--links-color);
+}
+
+/* link styles hover*/
+.link-styles:hover{
+    color:white ;
+    text-decoration: none; /* no underline */
+}
+
+/* title styles */
+.title-styles{
+    text-align: center;
+    font-size: 36px;
+    margin-bottom:20px;
+    margin-top: 20px;
+}
+
+/* styles for all main container  */
+.main-container-styles{
+    width: 350px;
+    height: auto;
+    padding: 0;
+    background-color:var(--container-box-color) ;
+    border-radius:15px ;
+    margin-top: 20px;
+    font-weight: bold;
+    /* padding-bottom: 20px; */
+}
+
+/* APP NAME SECTION */
+.app-title{
+    font-size: 28px;
+    letter-spacing: 5px;
+    text-shadow: 2px 2px white;
+    margin-left: 10px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: var(--links-color);
+
+}
+
+.app-title:hover{
+    
+    text-decoration: none;
+    color: var(--links-color);
+}
+
+.app-title span{
+    font-weight: bolder;
+}
+
+/* creds */
+.creds{
+    font-size: 12px !important;
+    text-align: center;
+    font-weight: 100 !important;
+}
+
+
+/* error styles */
+.error-styles{
+    text-align: center;
+}

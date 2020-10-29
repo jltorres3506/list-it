@@ -1,0 +1,83 @@
+
+.single-list-container{
+  width: 420px;
+  height: auto;
+  background-color:#867575 ;
+  border-radius:15px ;
+  margin-top: 20px;
+  padding:5px 10px 5px 10px;
+  
+}
+
+.list-heading-container{
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+
+/* the text input width when order number is clicked on */
+input.orderNumberInput  {
+    width: 35px;
+  }
+
+  /* input field for new item in single list view */
+textarea.newItem, .editItemInput{
+    
+    height: 60px;
+    top: 10px;
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    font-weight: 200;
+    width: 100%;
+    margin-right: 10px;
+   
+  }
+
+  /*  item text */
+  #item-text{
+    white-space:pre-wrap;
+    text-align: start;
+    overflow: auto; /*if text is to long gives it a horizontal scrol bar*/
+    
+  }
+
+ .items-container{
+    max-width: 100%;
+    margin: 50px auto;
+    background: var(--list-box-color);
+    box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+    font-weight: normal;
+    
+  }
+
+  .single-list-container p {
+    margin: 0;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 200;
+    color: #00204a;
+  }
+  
+
+ input.listTitleEditField{
+      font-size: 28px;
+      width: 85%;
+      margin: 15px 0 15px 0;
+      
+  }
+ 
+
+#btn-add-item{
+  min-height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border-color: transparent;
+  background-color: var(--add-button-color);
+  color: #fff;
+  font-size: 30px;
+  padding-bottom: 6px;
+  border-width: 0;
+  margin-top: 13px;
+  margin-left: -15px;
+}

@@ -1,0 +1,64 @@
+<%- include('partials/header') %>
+<div id="register-container" class="main-container-styles container ">
+  <%- include('partials/appName') %>
+  <div class="row ">
+      <div class="  col-12 ">
+        <h1 class="title-styles" id="register-title">Register</h1>
+          <% if(message.length > 0 ){%>
+            <p class= "error-styles text-danger"><%= message%></p>
+          <% }%>
+            
+    </div>
+  </div>
+
+   
+  
+          <!-- Makes POST request to /register route -->
+          <form id="register-form" action="/register" method="POST"></form>
+          <div class="container">
+              <div class="row">
+                <div class="col-12 form-group">
+                  <label for="firstName">First Name</label>
+                  <input autocomplete="off" form="register-form" value="<%= typeof firstName !== 'undefined' ? firstName : '' %>" type="text" class="form-control input-fields-register-styles" id="firstName" name="firstName">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 form-group">
+                  <label for="lastName">Last Name</label>
+                  <input autocomplete="off" value="<%= typeof lastName !== 'undefined' ? lastName : '' %>" form="register-form" type="text" class="form-control" id="lastName" name="lastName">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12 form-group">
+                  <label for="passcode">passcode (will be used for confirming  deletion of a list)</label>
+                  <input autocomplete="off" value="<%= typeof passcode !== 'undefined' ? passcode : '' %>" form="register-form" type="text" class="form-control" id="passcode" name="passcode" >
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-12 form-group">
+                  <label for="email">Email</label>
+                  <input autocomplete="off" value="<%= typeof username !== 'undefined' ? username : '' %>" form="register-form" type="email" class="form-control" id="email" name="username">
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-12 form-group">
+                  <label for="password">Password</label>
+                  <input autocomplete="off" form="register-form" type="password" class="form-control" id="password" name="password">
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-4">
+                  <button class="register-btn btn button-styles" form="register-form" type="submit" id="btn-submit" class="btn ">Submit</button>
+                </div>
+              </div>
+             
+              
+          </div>
+
+<%- include('partials/creds') %>
+</div>
+
+<%- include('partials/header') %>

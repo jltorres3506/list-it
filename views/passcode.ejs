@@ -1,0 +1,19 @@
+<%- include("partials/header") %>
+<div class="container passcode-container card">
+    <form action ="/passcode" method="post">
+        <div class="row">
+            <div class=" col-12 form-group">
+                <% if(errorMessage.length > 0 ){%>
+                    <p class= "text-danger"><%= errorMessage%></p>
+                    <% }%>
+                <label for="passcode">New Passcode</label>
+
+                <input type="text" class="form-control" id="passcode" name="passcode" >
+              </div>
+        </div>
+        
+          <input class="btn" type="submit" value="Submit">
+    </form>
+    
+</div>
+<%- include("partials/footer") %>

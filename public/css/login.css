@@ -1,0 +1,26 @@
+
+/* inputs-container */
+#login-container .inputs-container{
+margin-bottom: 20px;
+color: var(--font-color);
+
+}
+
+
+/* login btn container */
+#login-container .login-btn-container{
+    padding: 0;
+}
+
+
+
+.register-link{
+    margin-left: 25px;
+}
+
+/* password reset row */
+#login-container .password-reset-row{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
