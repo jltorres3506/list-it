@@ -1,5 +1,5 @@
 # List-it
-An app that allows you to make many todo lists
+An app that allows you to make many lists
 
 ## Live App
 https://list-it-todo.herokuapp.com/
@@ -24,3 +24,4 @@ Must have the following installed on computer
 4. run your mongoDb server using your GUI application
 5. in bash terminal make sure you are in project folder directory and type the following command ” nodemon app.js”
 6. go to your browser and type in localhost:3000, and application should appear
+7. register and login and start creating lists 
